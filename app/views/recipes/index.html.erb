@@ -1,0 +1,20 @@
+<h1>Searching for recipes with the following ingredient: <%= @search_term %></h1>
+
+<% if @recipes != nil %>
+    <table border="1">
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Social Rank</th>
+      </tr>
+      <% @recipes.each do |single_recipe| %>
+          <tr class=<%= cycle('even', 'odd') %> >
+            <td><%= link_to(image_tag(single_recipe["image_url"], height: '100', width: '100'), single_recipe["source_url"]) %></td>
+            <td><%= link_to(sanitize(single_recipe["title"]), single_recipe["source_url"]) %></td>
+            <td><%= single_recipe["social_rank"] %></td>
+          </tr>
+      <% end %>
+    </table>
+<% else %>
+    <p>Aw snap, there are no recipes with <%= @search_term %>.</p>
+<% end %>
