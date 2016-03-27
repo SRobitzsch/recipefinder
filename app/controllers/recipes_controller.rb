@@ -1,7 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    #params is a rails hash
-    @search_term = params[:search] || 'choclate'
+    @search_term = params[:search] || 'chocolate'
     @recipes = Recipe.for(@search_term)
   end
 end
